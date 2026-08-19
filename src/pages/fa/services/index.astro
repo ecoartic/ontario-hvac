@@ -1,5 +1,9 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro"; import SiteHeader from "../../../components/SiteHeader.astro"; import Footer from "../../../components/Footer.astro";
-const mods=import.meta.glob("../../../content/services/fa/*.md",{eager:true}); const services=Object.values(mods).map((m:any)=>m.frontmatter).filter((s:any)=>s.published!==false).sort((a:any,b:any)=>(a.order||99)-(b.order||99));
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import Footer from "../../../components/Footer.astro";
+import { withBase } from "../../../utils/paths";
+const mods=import.meta.glob("../../../content/services/fa/*.md",{eager:true});
+const services=Object.values(mods).map((m:any)=>m.frontmatter).filter((s:any)=>s.published!==false).sort((a:any,b:any)=>(a.order||99)-(b.order||99));
 ---
-<BaseLayout title="خدمات Ontario HVAC" description="فهرست خدمات Ontario HVAC Services"><SiteHeader/><main class="section"><div class="container"><div class="section-head"><span>خدمات</span><h1>همه خدمات</h1></div><div class="services-grid">{services.map((s:any)=><a class="service-card" href={`/fa/services/${s.slug}/`}><img src={s.image} alt={s.title}/><h2>{s.title}</h2><small>{s.englishTitle}</small><p>{s.summary}</p><b>مشاهده خدمت ←</b></a>)}</div></div></main><Footer/></BaseLayout>
+<BaseLayout title="خدمات Ontario HVAC" description="فهرست خدمات Ontario HVAC Services"><SiteHeader/><main class="section"><div class="container"><div class="section-head"><span>خدمات</span><h1>همه خدمات</h1></div><div class="services-grid">{services.map((s:any)=><a class="service-card" href={withBase(`/fa/services/${s.slug}/`)}><img src={withBase(s.image)} alt={s.title}/><h2>{s.title}</h2><small>{s.englishTitle}</small><p>{s.summary}</p><b>مشاهده خدمت ←</b></a>)}</div></div></main><Footer/></BaseLayout>
