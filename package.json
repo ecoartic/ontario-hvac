@@ -8,7 +8,8 @@
     "dev:site": "astro dev --host 127.0.0.1 --port 55000",
     "cms": "decap-server",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "node .github/init.js"
   },
   "dependencies": {
     "astro": "latest"
