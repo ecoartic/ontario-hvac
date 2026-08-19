@@ -1,14 +1,17 @@
 ---
 import "../styles/global.css";
+import { absoluteWithBase } from "../utils/paths";
 interface Props { title: string; description?: string; keywords?: string; image?: string; }
 const { title, description = "Ontario HVAC Services", keywords = "HVAC Ontario", image } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.url.origin);
+const ogImage = image ? absoluteWithBase(image) : undefined;
 ---
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href={import.meta.env.BASE_URL} />
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="keywords" content={keywords} />
@@ -16,7 +19,7 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  {image && <meta property="og:image" content={image} />}
+  {ogImage && <meta property="og:image" content={ogImage} />}
 </head>
 <body><slot /></body>
 </html>
