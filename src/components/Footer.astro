@@ -1,5 +1,6 @@
 ---
 import site from "../data/site.fa.json";
+import { withBase } from "../utils/paths";
 
 const iconMap = {
   instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.25" fill="currentColor"/></svg>',
@@ -41,7 +42,7 @@ const primaryContacts = [
 <footer class="site-footer">
   <div class="container footer-live">
     <div class="footer-brand">
-      <img src={site.logoImage} alt={site.businessName} />
+      <img src={withBase(site.logoImage)} alt={site.businessName} />
       <p>خدمات گرمایش، سرمایش و تجهیزات مرتبط در Ontario.</p>
       <div class="footer-chip-list">
         {primaryContacts.map((item) => (
@@ -54,9 +55,9 @@ const primaryContacts = [
     </div>
     <div>
       <strong>دسترسی سریع</strong>
-      <a href="/fa/">خانه</a>
-      <a href="/fa/#services">خدمات</a>
-      <a href="/fa/blog/">راهنما</a>
+      <a href={withBase('/fa/')}>خانه</a>
+      <a href={withBase('/fa/#services')}>خدمات</a>
+      <a href={withBase('/fa/blog/')}>راهنما</a>
     </div>
     <div>
       <strong>راه‌های ارتباطی</strong>
@@ -77,5 +78,5 @@ const primaryContacts = [
       )) : <span>هنوز ثبت نشده</span>}
     </div>
   </div>
-  <div class="container footer-reference"><img src={site.footerImage} alt="مرجع گرافیکی فوتر Ontario HVAC" /></div>
+  <div class="container footer-reference"><img src={withBase(site.footerImage)} alt="مرجع گرافیکی فوتر Ontario HVAC" /></div>
 </footer>
