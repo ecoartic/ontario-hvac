@@ -10,7 +10,7 @@ const services = Object.values(serviceModules).map((m:any)=>m.frontmatter).filte
 const blogModules = import.meta.glob("../../content/blog/fa/*.md", { eager: true });
 const posts = Object.values(blogModules).map((m:any)=>m.frontmatter).filter((p:any)=>p.published !== false).sort((a:any,b:any)=>String(b.date).localeCompare(String(a.date))).slice(0,3);
 ---
-<BaseLayout title={site.homeSeoTitle} description={site.homeSeoDescription}>
+<BaseLayout title={site.homeSeoTitle} description={site.homeSeoDescription} image={site.heroImage}>
   <SiteHeader />
   <main>
     <section class="hero-home">
