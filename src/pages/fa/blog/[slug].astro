@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import Footer from "../../../components/Footer.astro";
+import ContactButtons from "../../../components/ContactButtons.astro";
+
+export function getStaticPaths(){
+  const mods=import.meta.glob("../../../content/blog/fa/*.md",{eager:true});
+  return Object.values(mods).map((m:any)=>({params:{slug:m.frontmatter.slug}}));
+}
+
+const {slug}=Astro.params;
+const mods=import.meta.glob("../../../content/blog/fa/*.md",{eager:true});
+const mod:any=Object.values(mods).find((m:any)=>m.frontmatter.slug===slug);
+if(!mod) return Astro.redirect('/fa/blog/');
+const p=mod.frontmatter;
+const Content=mod.Content;
+const sections = Array.isArray(p.contentSections) ? p.contentSections : [];
+---
+<BaseLayout title={p.seoTitle || p.title} description={p.seoDescription || p.summary} keywords={p.seoKeywords} image={p.image}>
+  <SiteHeader/>
+  <main>
+    <section class="detail-hero article-head section">
+      <div class="container article-title">
+        <span>{p.date}</span>
+        <h1>{p.title}</h1>
+        <p>{p.summary}</p>
+      </div>
+    </section>
+
+    <article class="container article-body">
+      <img class="article-image" src={p.image} alt={p.title}/>
+
+      {sections.length > 0 ? (
+        <div class="article-sections">
+          {sections.map((section:any) => (
+            <section class="article-section-block">
+              <h2>{section.heading}</h2>
+              <p>{section.text}</p>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <Content/>
+      )}
+
+      <div class="article-cta">
+        <h3>برای بررسی تخصصی سیستم HVAC تماس بگیرید</h3>
+        <ContactButtons compact={true}/>
+      </div>
+    </article>
+  </main>
+  <Footer/>
+</BaseLayout>

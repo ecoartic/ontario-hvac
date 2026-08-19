@@ -1,0 +1,18 @@
+---
+import site from "../data/site.fa.json";
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/fa/" class="logo-link"><img src={site.logoImage} alt={site.businessName} class="site-logo" /></a>
+    <nav class="nav">
+      <a href="/fa/">خانه</a>
+      <a href="/fa/#services">خدمات</a>
+      <a href="/fa/blog/">راهنما</a>
+      <a href={site.googleMapsUrl} target="_blank" rel="noreferrer">لوکیشن</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-pill phone" href={`tel:${site.phone}`}>☎ {site.phoneDisplay}</a>
+      <a class="header-pill whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer">واتساپ</a>
+    </div>
+  </div>
+</header>

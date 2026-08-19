@@ -1,0 +1,111 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend:
+  url: http://127.0.0.1:55001/api/v1
+
+locale: fa
+site_url: http://127.0.0.1:55000
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: settings
+    label: تنظیمات سایت
+    files:
+      - name: site
+        label: اطلاعات اصلی
+        file: src/data/site.fa.json
+        format: json
+        preview_path: fa
+        fields:
+          - { label: نام کسب‌وکار, name: businessName, widget: string }
+          - { label: شماره تلفن خام, name: phone, widget: string }
+          - { label: نمایش شماره تلفن, name: phoneDisplay, widget: string }
+          - { label: شماره واتساپ, name: whatsapp, widget: string }
+          - { label: ایمیل, name: email, widget: string }
+          - { label: آدرس, name: address, widget: string }
+          - { label: لینک Google Maps, name: googleMapsUrl, widget: string }
+          - label: شبکه‌های اجتماعی
+            name: socialLinks
+            widget: list
+            summary: '{{fields.label}} — {{fields.icon}}'
+            required: false
+            fields:
+              - { label: عنوان, name: label, widget: string }
+              - label: آیکون
+                name: icon
+                widget: select
+                options:
+                  - { label: Instagram, value: instagram }
+                  - { label: Facebook, value: facebook }
+                  - { label: Google, value: google }
+                  - { label: Telegram, value: telegram }
+                  - { label: YouTube, value: youtube }
+                  - { label: LinkedIn, value: linkedin }
+                  - { label: WhatsApp, value: whatsapp }
+                  - { label: Email, value: email }
+                  - { label: Location, value: location }
+                  - { label: Phone, value: phone }
+                  - { label: Globe, value: globe }
+              - { label: لینک, name: url, widget: string }
+              - { label: فعال, name: enabled, widget: boolean, default: true }
+          - { label: لوگو, name: logoImage, widget: image }
+          - { label: تصویر Hero, name: heroImage, widget: image }
+          - { label: تصویر Footer مرجع, name: footerImage, widget: image }
+          - { label: Alt تصویر Hero, name: heroAlt, widget: string }
+          - { label: SEO Title صفحه اصلی, name: homeSeoTitle, widget: string }
+          - { label: SEO Description صفحه اصلی, name: homeSeoDescription, widget: text }
+
+  - name: services
+    label: خدمات
+    label_singular: خدمت
+    folder: src/content/services/fa
+    create: true
+    format: frontmatter
+    slug: "{{slug}}"
+    preview_path: "fa/services/{{slug}}"
+    fields:
+      - { label: عنوان فارسی, name: title, widget: string }
+      - { label: عنوان انگلیسی, name: englishTitle, widget: string, required: false }
+      - { label: Slug, name: slug, widget: string }
+      - { label: ترتیب نمایش, name: order, widget: number, value_type: int, default: 10 }
+      - { label: تصویر/آیکون, name: image, widget: image }
+      - { label: توضیح کوتاه, name: summary, widget: text }
+      - { label: SEO Title, name: seoTitle, widget: string }
+      - { label: SEO Description, name: seoDescription, widget: text }
+      - { label: SEO Keywords, name: seoKeywords, widget: string, required: false }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+      - { label: یادداشت برای پیشنهاد AI, name: aiNotes, widget: text, required: false, hint: "فعلاً این فیلد برای آماده‌کردن brief هوش مصنوعی است؛ بعداً دکمه AI به آن وصل می‌شود." }
+      - { label: متن صفحه خدمت, name: body, widget: markdown }
+
+  - name: blog
+    label: بلاگ
+    label_singular: مقاله
+    folder: src/content/blog/fa
+    create: true
+    format: frontmatter
+    slug: "{{slug}}"
+    preview_path: "fa/blog/{{slug}}"
+    fields:
+      - { label: عنوان, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: تاریخ, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: تصویر, name: image, widget: image }
+      - { label: خلاصه, name: summary, widget: text }
+      - { label: SEO Title, name: seoTitle, widget: string }
+      - { label: SEO Description, name: seoDescription, widget: text }
+      - { label: SEO Keywords, name: seoKeywords, widget: string, required: false }
+      - { label: انتشار, name: published, widget: boolean, default: true }
+      - { label: یادداشت برای پیشنهاد AI, name: aiNotes, widget: text, required: false }
+      - label: محتوای مقاله
+        name: contentSections
+        widget: list
+        label_singular: بخش مقاله
+        summary: '{{fields.heading}}'
+        min: 1
+        fields:
+          - { label: عنوان بخش, name: heading, widget: string, hint: "مثال: بررسی دوره‌ای سیستم" }
+          - { label: متن بخش, name: text, widget: text, hint: "متن پاراگراف را ساده وارد کنید؛ اندازه و فاصله فونت در سایت به‌صورت استاندارد اعمال می‌شود." }
+      - { label: متن قدیمی مقاله, name: body, widget: hidden, default: "" }

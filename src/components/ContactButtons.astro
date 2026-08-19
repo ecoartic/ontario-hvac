@@ -1,0 +1,9 @@
+---
+import site from "../data/site.fa.json";
+const { compact = false } = Astro.props;
+---
+<div class:list={["contact-buttons", compact && "compact"]}>
+  <a class="button call" href={`tel:${site.phone}`}>☎ تماس مستقیم</a>
+  <a class="button whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer">پیام در واتساپ</a>
+  <a class="button location" href={site.googleMapsUrl} target="_blank" rel="noreferrer">لوکیشن</a>
+</div>

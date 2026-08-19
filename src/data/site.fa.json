@@ -1,0 +1,59 @@
+{
+  "businessName": "Ontario HVAC Services",
+  "phone": "4165703342",
+  "phoneDisplay": "416 570 33 42",
+  "whatsapp": "14165703342",
+  "address": "Ontario, Canada",
+  "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ontario%2C%20Canada",
+  "instagramUrl": "#",
+  "facebookUrl": "#",
+  "googleBusinessUrl": "#",
+  "email": "info@ontariohvac.ca",
+  "logoImage": "/images/logo/ontario-hvac-logo.jpg",
+  "heroImage": "/images/hero/ontario-hvac-hero.png",
+  "footerImage": "/images/footer/footer-graphic.png",
+  "homeSeoTitle": "خدمات HVAC در انتاریو | Ontario HVAC Services",
+  "homeSeoDescription": "خدمات نصب، سرویس و تعمیر سیستم‌های گرمایش، سرمایش، آبگرمکن و خطوط گاز در انتاریو. تماس مستقیم، واتساپ و لوکیشن.",
+  "heroAlt": "خدمات گرمایش و سرمایش Ontario HVAC Services",
+  "telegramUrl": "#",
+  "youtubeUrl": "#",
+  "linkedinUrl": "#",
+  "socialLinks": [
+    {
+      "label": "Instagram",
+      "icon": "instagram",
+      "url": "#",
+      "enabled": false
+    },
+    {
+      "label": "Facebook",
+      "icon": "facebook",
+      "url": "#",
+      "enabled": false
+    },
+    {
+      "label": "Google Business",
+      "icon": "google",
+      "url": "#",
+      "enabled": false
+    },
+    {
+      "label": "Telegram",
+      "icon": "telegram",
+      "url": "#",
+      "enabled": false
+    },
+    {
+      "label": "YouTube",
+      "icon": "youtube",
+      "url": "#",
+      "enabled": false
+    },
+    {
+      "label": "LinkedIn",
+      "icon": "linkedin",
+      "url": "#",
+      "enabled": false
+    }
+  ]
+}

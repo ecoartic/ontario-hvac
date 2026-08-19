@@ -1,0 +1,20 @@
+{
+  "name": "ontario-hvac-fa-simple",
+  "version": "0.3.6.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --names SITE,CMS \"npm run dev:site\" \"npm run cms\"",
+    "dev:site": "astro dev --host 127.0.0.1 --port 55000",
+    "cms": "decap-server",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "latest"
+  },
+  "devDependencies": {
+    "concurrently": "latest",
+    "decap-server": "latest"
+  }
+}

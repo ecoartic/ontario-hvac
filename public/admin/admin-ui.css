@@ -1,0 +1,17 @@
+
+html,body{margin:0;background:#eef3f9;font-family:Tahoma,Arial,sans-serif;direction:ltr}
+#nc-root{direction:ltr}
+/* Keep Decap's own layout geometry intact; only Persian content controls are RTL. */
+#nc-root input,
+#nc-root textarea,
+#nc-root [contenteditable="true"],
+#nc-root [data-slate-editor="true"]{direction:rtl!important;text-align:right!important}
+#nc-root label{direction:rtl;text-align:right;font-weight:700}
+#nc-root input,#nc-root textarea,#nc-root select{border-radius:10px!important;border:1px solid #d9e4f0!important;background:#fff!important}
+#nc-root [class*="EditorContainer"]{background:#eef3f9!important}
+#nc-root [class*="EditorControlPaneContainer"],#nc-root [class*="PreviewPaneContainer"]{background:#f6f8fb!important}
+#nc-root [class*="ToolbarContainer"],#nc-root [class*="EditorToolbarContainer"]{background:#fff!important}
+/* Article section list: compact, clear cards without touching split-pane sizing. */
+#nc-root [class*="ListControl"]{border-radius:14px!important}
+#nc-root [class*="ListControl"]>div{border-radius:12px!important}
+#nc-root [class*="ListControl"] input,#nc-root [class*="ListControl"] textarea{background:#fff!important}
