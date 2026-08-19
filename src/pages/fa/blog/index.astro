@@ -1,5 +1,9 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro"; import SiteHeader from "../../../components/SiteHeader.astro"; import Footer from "../../../components/Footer.astro";
-const mods=import.meta.glob("../../../content/blog/fa/*.md",{eager:true}); const posts=Object.values(mods).map((m:any)=>m.frontmatter).filter((p:any)=>p.published!==false).sort((a:any,b:any)=>String(b.date).localeCompare(String(a.date)));
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import Footer from "../../../components/Footer.astro";
+import { withBase } from "../../../utils/paths";
+const mods=import.meta.glob("../../../content/blog/fa/*.md",{eager:true});
+const posts=Object.values(mods).map((m:any)=>m.frontmatter).filter((p:any)=>p.published!==false).sort((a:any,b:any)=>String(b.date).localeCompare(String(a.date)));
 ---
-<BaseLayout title="راهنما و بلاگ Ontario HVAC" description="مقالات کوتاه درباره نگهداری و خدمات HVAC"><SiteHeader/><main class="section"><div class="container"><div class="section-head"><span>بلاگ</span><h1>راهنماها و نکات</h1></div><div class="blog-grid">{posts.map((p:any)=><a class="blog-card" href={`/fa/blog/${p.slug}/`}><img src={p.image} alt={p.title}/><div><small>{p.date}</small><h2>{p.title}</h2><p>{p.summary}</p></div></a>)}</div></div></main><Footer/></BaseLayout>
+<BaseLayout title="راهنما و بلاگ Ontario HVAC" description="مقالات کوتاه درباره نگهداری و خدمات HVAC"><SiteHeader/><main class="section"><div class="container"><div class="section-head"><span>بلاگ</span><h1>راهنماها و نکات</h1></div><div class="blog-grid">{posts.map((p:any)=><a class="blog-card" href={withBase(`/fa/blog/${p.slug}/`)}><img src={withBase(p.image)} alt={p.title}/><div><small>{p.date}</small><h2>{p.title}</h2><p>{p.summary}</p></div></a>)}</div></div></main><Footer/></BaseLayout>
