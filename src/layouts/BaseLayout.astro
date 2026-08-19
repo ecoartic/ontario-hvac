@@ -17,6 +17,15 @@ const ogImage = image ? absoluteWithBase(image) : undefined;
   <meta name="keywords" content={keywords} />
   <link rel="canonical" href={canonical} />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style is:inline>
+    html, body, button, input, textarea, select {
+      font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+    }
+  </style>
+
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
