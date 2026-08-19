@@ -1,6 +1,15 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro"; import SiteHeader from "../../../components/SiteHeader.astro"; import Footer from "../../../components/Footer.astro"; import ContactButtons from "../../../components/ContactButtons.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import Footer from "../../../components/Footer.astro";
+import ContactButtons from "../../../components/ContactButtons.astro";
+import { withBase } from "../../../utils/paths";
 export function getStaticPaths(){ const mods=import.meta.glob("../../../content/services/fa/*.md",{eager:true}); return Object.values(mods).map((m:any)=>({params:{slug:m.frontmatter.slug}})); }
-const {slug}=Astro.params; const mods=import.meta.glob("../../../content/services/fa/*.md",{eager:true}); const mod:any=Object.values(mods).find((m:any)=>m.frontmatter.slug===slug); if(!mod) return Astro.redirect('/fa/services/'); const s=mod.frontmatter; const Content=mod.Content;
+const {slug}=Astro.params;
+const mods=import.meta.glob("../../../content/services/fa/*.md",{eager:true});
+const mod:any=Object.values(mods).find((m:any)=>m.frontmatter.slug===slug);
+if(!mod) return Astro.redirect(withBase('/fa/services/'));
+const s=mod.frontmatter;
+const Content=mod.Content;
 ---
-<BaseLayout title={s.seoTitle || s.title} description={s.seoDescription || s.summary} keywords={s.seoKeywords} image={s.image}><SiteHeader/><main><section class="detail-hero section"><div class="container detail-grid"><img src={s.image} alt={s.title}/><div><span>{s.englishTitle}</span><h1>{s.title}</h1><p>{s.summary}</p><ContactButtons /></div></div></section><article class="container article-body"><Content /></article></main><Footer/></BaseLayout>
+<BaseLayout title={s.seoTitle || s.title} description={s.seoDescription || s.summary} keywords={s.seoKeywords} image={s.image}><SiteHeader/><main><section class="detail-hero section"><div class="container detail-grid"><img src={withBase(s.image)} alt={s.title}/><div><span>{s.englishTitle}</span><h1>{s.title}</h1><p>{s.summary}</p><ContactButtons /></div></div></section><article class="container article-body"><Content /></article></main><Footer/></BaseLayout>
